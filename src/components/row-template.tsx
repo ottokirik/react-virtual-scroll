@@ -1,8 +1,21 @@
-interface IRowItem {
+import { SETTINGS } from '../constants/settings';
+
+export interface IRowItem {
   index: number;
   text: string;
 }
 
-export const RowTemplate = ({ item }: { item: IRowItem }): JSX.Element => {
-  return <div key={item.index}>{item.text}</div>;
+export interface IRowTemplate {
+  item: IRowItem;
+}
+
+export const RowTemplate = ({ item }: IRowTemplate): JSX.Element => {
+  return (
+    <div
+      style={{ height: SETTINGS.itemHeight, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      key={item.index}
+    >
+      {item.text}
+    </div>
+  );
 };
